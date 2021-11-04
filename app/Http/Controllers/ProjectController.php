@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Project_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,9 +25,9 @@ class ProjectController extends Controller
         return redirect('/wego/projectList');
     }
 
-    public function show() {
-        
+    public function list() {
+        $participant = Project_user::find(Auth::user()->id);
         $project = Project::latest()->paginate(5);
-        return view('projectList', ['project'=>$project]);
+        return view('front/projectList', ['projects'=>$project, 'participant'=>$participant]);
     }
 }

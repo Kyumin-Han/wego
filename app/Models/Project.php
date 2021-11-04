@@ -15,4 +15,8 @@ class Project extends Model
         'outline',
         'explanation',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

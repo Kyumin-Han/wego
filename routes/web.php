@@ -30,9 +30,9 @@ Route::get('/wego/makeProject', function () {
     return view('front/makeProject');
 })->name('makeProject');
 
-Route::get('/wego/projectList', function () {
-    return view('front/projectList');
-})->name('projectList');
+// Route::get('/wego/projectList', function () {
+//     return view('front/projectList');
+// })->name('projectList');
 
 Route::get('/wego/minutesList', function () {
     return view('front/minutesList');
@@ -43,6 +43,8 @@ Route::post('/wego/makeMinutes', function () {
 })->name('makeMinutes');
 
 Route::post('/wego/projectStore', [ProjectController::class, 'store']);
+
+Route::get('/wego/projectList', [ProjectController::class, 'list'])->name('projectList');
 
 
 require __DIR__.'/auth.php';
